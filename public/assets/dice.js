@@ -1,4 +1,3 @@
-// dice.js - A simple dice module
 class Dice {
     constructor(sides = 6) {
       this.sides = sides; // Default to a six-sided dice
