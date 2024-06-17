@@ -1,0 +1,14 @@
+.dice {
+    display: grid;
+    border: solid 2px black;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: min(50vh,50vw);
+    height: min(50vh,50vh);
+}
+
+.dot {
+    background-color: black;
+    border-radius: 50%;
+    margin: 15px;
+}

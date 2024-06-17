@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yatzy Dice Roller</title>
-  <script type="module" src="/assets/dice.js"></script>
-  <script type="module" src="/assets/yatzy_game.js"></script>
+  <script type="module" src="assets/dice.js"></script>
+  <script type="module" src="assets/yatzy_game.js"></script>
 </head>
 <body>
   <h1>Yatzy Dice Roller</h1>
@@ -14,8 +14,8 @@
   <p>Score: <span id="scoreOutput">0</span></p>
 
   <script type="module">
-    import YatzyGame from '/assets/yatzy_game.js';
-    
+    import YatzyGame from '/public/assets/yatzy_game.js';
+
     const game = new YatzyGame();
     const rollButton = document.getElementById('rollButton');
     const diceOutput = document.getElementById('diceOutput');
