@@ -13,6 +13,10 @@ class Dice {
         return this.state;
     }
 
+    getState(){
+        return this.state;
+    }
+
     render() {
         const layouts = {
             1: [false, false, false,
@@ -35,7 +39,9 @@ class Dice {
                 true, false, true],
 
         }
-
+        // clear dice dom
+        this.dom.innerHTML = "";
+        //rerender dice
         for (let i = 0; i < 9; i++) {
             let child = document.createElement("div");
             if (layouts[this.state][i]) {
@@ -43,7 +49,6 @@ class Dice {
             }
             this.dom.appendChild(child);
         }
-        console.log(this.state);
         return this.dom;
     }
 }

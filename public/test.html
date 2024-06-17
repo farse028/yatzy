@@ -6,11 +6,13 @@
   <title>Yatzy Dice Roller</title>
   <script type="module" src="assets/dice.js"></script>
   <script type="module" src="assets/yatzy_game.js"></script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Yatzy Dice Roller</h1>
+  <h2>Dice Rolled</h2>
+  <div id="diceOutput"></div>
   <button id="rollButton">Roll Dice</button>
-  <p>Dice Rolled: <span id="diceOutput">None</span></p>
   <p>Score: <span id="scoreOutput">0</span></p>
 
   <script type="module">
@@ -23,7 +25,13 @@
 
     rollButton.addEventListener('click', () => {
       game.rollDice();
-      diceOutput.textContent = game.diceValues.join(', ');
+      // clear dice
+      diceOutput.innerHTML = "";
+      //re-render dice
+      game.dices.forEach((dice) => {
+        diceOutput.appendChild(dice.render());
+      });
+
     });
   </script>
 </body>
