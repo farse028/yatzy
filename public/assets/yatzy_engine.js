@@ -155,7 +155,6 @@ function calculateLargeStraight(diceState) {
     return 20;
 }
 
-//TODO: do this
 function calculateFullHouse(diceState) {
     // full house = three of a kind + a two of a kind that are distinct
     let numCount = new Map();
