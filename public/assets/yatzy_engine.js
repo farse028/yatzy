@@ -1,0 +1,168 @@
+function calculateOnes(diceState) {
+    let score = 0;
+    for (let i = 0; i < diceState.length; i++) {
+        if (diceState[i] === 1) {
+            score += diceState[i];
+        }
+    }
+    return score;
+}
+
+function calculateTwos(diceState) {
+    let score = 0;
+    for (let i = 0; i < diceState.length; i++) {
+        if (diceState[i] === 2) {
+            score += diceState[i];
+        }
+    }
+    return score;
+}
+
+function calculateThrees(diceState) {
+    let score = 0;
+    for (let i = 0; i < diceState.length; i++) {
+        if (diceState[i] === 3) {
+            score += diceState[i];
+        }
+    }
+    return score;
+}
+
+function calculateFours(diceState) {
+    let score = 0;
+    for (let i = 0; i < diceState.length; i++) {
+        if (diceState[i] === 4) {
+            score += diceState[i];
+        }
+    }
+    return score;
+}
+
+function calculateFives(diceState) {
+    let score = 0;
+    for (let i = 0; i < diceState.length; i++) {
+        if (diceState[i] === 5) {
+            score += diceState[i];
+        }
+    }
+    return score;
+}
+
+function calculateSixes(diceState) {
+    let score = 0;
+    for (let i = 0; i < diceState.length; i++) {
+        if (diceState[i] === 6) {
+            score += diceState[i];
+        }
+    }
+    return score;
+}
+
+function calculateOnePair(diceState) {
+    // sort in descending order
+    diceState.sort((a, b) => b - a);
+    let l = 0
+    for (let r = 1; r < diceState.length; l++, r++) {
+        // if a pair is found it is the max sum pair
+        if (diceState[r] === diceState[l]) {
+            return diceState[r] * 2;
+        }
+    }
+    return 0;
+}
+
+function calculateTwoPair(diceState) {
+    // sort in descending order
+    diceState.sort((a, b) => b - a);
+
+    let pairsFound = 0;
+    let score = 0;
+    let l = 0
+    for (let r = 1; r < diceState.length; l++, r++) {
+        // if a pair is found it is the max sum pair
+        if (diceState[r] === diceState[l]) {
+            score += diceState[l] * 2;
+            // need to do extra increment since pointers are in a pair
+            l++;
+            r++;
+            // if two pairs found return them (it is the max)
+            if (++pairsFound === 2) {
+                return score;
+            }
+        }
+    }
+    return score;
+}
+
+function calculateThreeOfAKind(diceState) {
+    // this works because there is 5 dice
+    let numCount = new Map();
+    for (let i = 0; i < diceState.length; i++) {
+        let count = numCount.has(diceState[i]) ? numCount.get(diceState[i]) + 1 : 1;
+
+        // if number appears three times
+        if (count === 3) {
+            return diceState[i] * 3;
+        }
+        numCount.set(diceState[i], count);
+    }
+    return 0;
+}
+
+function calculateFourOfAKind(diceState) {
+    // this works because there is 5 dice
+    let numCount = new Map();
+    for (let i = 0; i < diceState.length; i++) {
+        let count = numCount.has(diceState[i]) ? numCount.get(diceState[i]) + 1 : 1;
+
+        if (count === 4) {
+            return diceState[i] * 4;
+        }
+        numCount.set(diceState[i], count);
+    }
+    return 0;
+}
+
+function calculateSmallStraight(diceState) {
+    let nums = new Set(diceState);
+    // check if the set has numbers 1-5
+    for (let i = 1; i <= 5; i++) {
+        if (!nums.has(i)) {
+            return 0;
+        }
+    }
+    return 15;
+}
+
+function calculateLargeStraight(diceState) {
+    let nums = new Set(diceState);
+    // check if the set has numbers 2-6
+    for (let i = 2; i <= 6; i++) {
+        if (!nums.has(i)) {
+            return 0;
+        }
+    }
+    return 20;
+}
+
+//TODO: do this
+function calculateFullHouse(diceState) {
+
+}
+
+function calculateChance(diceState) {
+    let score = 0;
+    for (let i = 0; i < diceState.length; i++) {
+        score += diceState[i];
+    }
+    return score;
+}
+
+function calculateYatzy(diceStates) {
+    for (let i = 1; i < diceStates.length; i++) {
+        if (diceStates[i] !== diceStates[i - 1]) {
+            return 0;
+        }
+    }
+    return 50;
+}
