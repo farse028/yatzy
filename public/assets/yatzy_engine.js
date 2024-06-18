@@ -157,8 +157,29 @@ function calculateLargeStraight(diceState) {
 
 //TODO: do this
 function calculateFullHouse(diceState) {
+    // full house = three of a kind + a two of a kind that are distinct
+    let numCount = new Map();
 
+    // get count of each number
+    for (let i = 0; i < diceState.length; i++) {
+        let count = numCount.has(diceState[i]) ? numCount.get(diceState[i]) + 1 : 1;
+        numCount.set(diceState[i], count);
+    }
+
+    let score = 0;
+    for (let [num, count] of numCount) {
+        if (count !== 2 && count!== 3) {
+            return 0;
+        }
+        score += num * count;
+    }
+
+    return score;
 }
+
+// console.log(calculateFullHouse([1,2,3,4,5]))
+// console.log(calculateFullHouse([1,1,3,3,3]))
+// console.log(calculateFullHouse([6,5,5,6,5]))
 
 function calculateChance(diceState) {
     let score = 0;
