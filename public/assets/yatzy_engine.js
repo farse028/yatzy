@@ -71,7 +71,7 @@ function calculateOnePair(diceState) {
     return 0;
 }
 
-function calculateTwoPair(diceState) {
+function calculateTwoPairs(diceState) {
     // sort in descending order
     diceState.sort((a, b) => b - a);
 
@@ -82,17 +82,27 @@ function calculateTwoPair(diceState) {
         // if a pair is found it is the max sum pair
         if (diceState[r] === diceState[l]) {
             score += diceState[l] * 2;
-            // need to do extra increment since pointers are in a pair
-            l++;
-            r++;
+
             // if two pairs found return them (it is the max)
             if (++pairsFound === 2) {
                 return score;
             }
+
+
+            // need to find new numbers (pairs must be distinct)
+            while (r < diceState.length && diceState[r] === diceState[l]) {
+                r++;
+            }
+            // make left pointer 1 lower than the right pointer
+            l = r - 1;
         }
     }
-    return score;
+    return 0;
 }
+
+// console.log(calculateTwoPairs([1,1,1,1,5]));
+// console.log(calculateTwoPairs([1,1,2,2,5]));
+// console.log(calculateTwoPairs([6,1,2,2,6]));
 
 function calculateThreeOfAKind(diceState) {
     // this works because there is 5 dice
