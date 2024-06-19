@@ -2,7 +2,7 @@ import Dice from "/public/assets/dice.js";
 
 class YatzyGame {
     constructor() {
-        this.rollNumber = 0; // Which roll you are on (0, 1, 2, or 3)
+        this.rollsRemaining = 3;
         this.dices = [new Dice(), new Dice(), new Dice(), new Dice(), new Dice()]; // Current value on each of the 5 dice
         this.keepState = [false, false, false, false, false]; // Keep / re-roll state of each dice
         this.scoreState = {
@@ -16,7 +16,7 @@ class YatzyGame {
 
             // lower section
             onePair: null,
-            twoPair: null,
+            twoPairs: null,
             threeOfAKind: null,
             fourOfAKind: null,
             smallStraight: null,
@@ -30,12 +30,34 @@ class YatzyGame {
 
     rollDice() {
         // Roll the dice that are not kept
-        for (let i = 0; i < this.dices.length; i++) {
-            if (!this.keepState[i]) {
-                this.dices[i].roll();
+        if (this.rollsRemaining > 0) {
+            for (let i = 0; i < this.dices.length; i++) {
+                if (!this.keepState[i]) {
+                    this.dices[i].roll();
+                }
             }
+            this.rollsRemaining--;
         }
-        this.rollNumber++;
+    }
+
+    getDice() {
+        let res = []
+        for (let i = 0; i < this.dices.length; i++) {
+            res.push(this.dices[i].getState());
+        }
+        return res;
+    }
+
+    selectScore(scoreMethod) {
+        if (this.scoreState[scoreMethod] === null) {
+            console.log('in')
+            let funcName = scoreMethod.charAt(0).toUpperCase() + scoreMethod.slice(1)
+            let func = `calculate${funcName}(this.getDice())`
+            this.scoreState[scoreMethod] = eval(func);
+            console.log(this.scoreState);
+            // if success -> reset the users turn
+            this.resetTurn()
+        }
     }
 
     toggleKeep(index) {
@@ -45,7 +67,7 @@ class YatzyGame {
 
     resetTurn() {
         // Reset the turn to its initial state
-        this.rollNumber = 0; // Which roll you are on (0, 1, 2, or 3)
+        this.rollsRemaining = 2;
         this.dices = [new Dice(), new Dice(), new Dice(), new Dice(), new Dice()]; // Current value on each of the 5 dice
         this.keepState = [false, false, false, false, false]; // Keep / re-roll state of each dice
     }
