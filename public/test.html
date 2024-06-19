@@ -10,12 +10,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header id="header">
+<div id="sideCard">
     <h1>Yatzy Dice Roller</h1>
-</header>
+    <div id="rules">
+        <h3>Rules</h3>
+        <p>You have up to 3 rolls per turn. In each turn you can choose which dice you keep (the rest are rerolled).
+            During each turn you must choose a method to score as described on the scorecard. Each scoring method must be used only once per game.</p>
+
+        <h3>Controls</h3>
+        <ul>
+            <li>Click the roll button to roll</li>
+            <li>Click which dice you want to change the re-roll state. A red outline indicates that it is a keeper.</li>
+            <li>Click the scoring method on the scorecard to finish turn and choose scoring method</li>
+            <li>Click the new game button to start a new game</li>
+        </ul>
+    </div>
+</div>
 <div id="body">
     <table id="scoreCard">
-        <tr class="label">
+        <tr class="label" id="scoreCardTitle">
             <th colspan="3">SCORE CARD</th>
         </tr>
         <tbody>
@@ -28,7 +41,7 @@
             <th colspan="3">Upper Section</th>
         </tr>
         <tr id="ones">
-            <th>1's</th>
+            <th>1'</th>
             <td>5</td>
         </tr>
         <tr id="twos">
@@ -65,7 +78,7 @@
         </tr>
         <tr id="onePair">
             <th>One Pair</th>
-            <td>0</td>
+            <td>12</td>
         </tr>
         <tr id="twoPairs">
             <th>Two Pairs</th>
@@ -81,11 +94,11 @@
         </tr>
         <tr id="smallStraight">
             <th>Small Straight</th>
-            <td>0</td>
+            <td>15</td>
         </tr>
         <tr id="largeStraight">
             <th>Large Straight</th>
-            <td>0</td>
+            <td>20</td>
         </tr>
         <tr id="fullHouse">
             <th>Full House</th>
@@ -93,11 +106,11 @@
         </tr>
         <tr id="chance">
             <th>Chance</th>
-            <td>0</td>
+            <td>30</td>
         </tr>
         <tr id="yatzy">
             <th>Yatzy</th>
-            <td>0</td>
+            <td>50</td>
         </tr>
         <tr id="total">
             <th>Total</th>
@@ -113,7 +126,6 @@
         <button id="newGameButton">New Game</button>
     </div>
 </div>
-
 <script type="module">
     import YatzyGame from '/public/assets/yatzy_game.js';
 
@@ -185,8 +197,5 @@
         }
     }
 </script>
-<footer>
-    <p>Designed by Aiden and Felix</p>
-</footer>
 </body>
 </html>
