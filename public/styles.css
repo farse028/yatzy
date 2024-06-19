@@ -1,3 +1,44 @@
+* {
+    font-family: 'revue', serif;
+}
+
+header {
+    background-color: red;
+    padding: 50px 10px 50px 10px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#body {
+    background-color: white;
+    display: flex;
+    padding: 30px 20px 30px 20px;
+}
+
+footer {
+    background-color: red;
+    text-align: center;
+    color: white;
+}
+
+@font-face {
+    font-family: 'revue';
+    src: url('/public/assets/RevueStd.ttf');
+}
+
+h1 {
+    font-family: 'revue', serif;
+    color: white;
+}
+
 .dice {
     display: grid;
     border: solid 2px black;
@@ -18,6 +59,10 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    background-color: white;
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #game {
@@ -30,14 +75,11 @@
 }
 table {
     border-collapse: collapse;
+    background-color: white;
 }
 
 th, td {
     border: solid 1px black;
-}
-
-#body {
-    display: flex;
 }
 
 tr:hover:not(.used, .label, #total, #upperSum, #bonus) {
@@ -49,6 +91,10 @@ tr:hover:not(.used, .label, #total, #upperSum, #bonus) {
 }
 
 .locked {
+    border: solid 2px red;
+}
+
+.dice:hover {
     border: solid 2px red;
 }
 

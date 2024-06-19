@@ -10,10 +10,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<div id="header">
+<header id="header">
     <h1>Yatzy Dice Roller</h1>
-</div>
+</header>
 <div id="body">
     <table id="scoreCard">
         <tr class="label">
@@ -107,28 +106,35 @@
     </table>
     <div id="game">
         <h2>Dice Rolled</h2>
-        <div id="diceOutput"></div>
-        <button id="rollButton">Roll Dice</button>
+        <div id="diceOutput">
+        </div>
         <p>Rolls remaining: <span id="rollsRemaining"></span></p>
+        <button id="rollButton">Roll Dice</button>
+        <button id="newGameButton">New Game</button>
     </div>
 </div>
 
 <script type="module">
     import YatzyGame from '/public/assets/yatzy_game.js';
 
-    const game = new YatzyGame();
+    let game = new YatzyGame();
     const rollButton = document.getElementById('rollButton');
+    const newGameButton = document.getElementById('newGameButton')
     const diceOutput = document.getElementById('diceOutput');
     const scoreOutput = document.getElementById('scoreCard');
     const rows = scoreOutput.rows;
     const rollsRemaining = document.getElementById('rollsRemaining');
 
     render();
-    rollsRemaining.innerHTML = game.rollsRemaining;
     rollButton.addEventListener('click', () => {
         game.rollDice();
         render();
     });
+
+    newGameButton.addEventListener('click', () => {
+        game = new YatzyGame();
+        render();
+    })
 
     function render() {
         // clear dice
@@ -155,7 +161,9 @@
             let id = row.id;
             //remove click event listener (to make rerendering quick).
             row.removeEventListener('click', row.fn);
-
+            // need to mark rows as unused (will get marked when rendering)
+            // need to do this because when starting new game it needs to be reset
+            row.classList.remove('used');
             if (id !== "") {
                 if (game.scoreState[id] === undefined) {
                     let func = `calculate${id.charAt(0).toUpperCase() + id.slice(1)}(game.scoreState)`;
@@ -177,5 +185,8 @@
         }
     }
 </script>
+<footer>
+    <p>Designed by Aiden and Felix</p>
+</footer>
 </body>
 </html>

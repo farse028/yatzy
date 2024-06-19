@@ -200,7 +200,7 @@ function calculateYatzy(diceStates) {
 
 function calculateUpperSum(gameState) {
     // null = 0 in js so this works
-    return gameState['ones'] + gameState['twos'] + gameState['threes'] + gameState['fours'] + gameState['fives'] + gameState['sixes'] + gameState['sixes'];
+    return gameState['ones'] + gameState['twos'] + gameState['threes'] + gameState['fours'] + gameState['fives'] + gameState['sixes'];
 }
 
 function calculateBonus(gameState) {
