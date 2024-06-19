@@ -13,6 +13,7 @@
 - <img valign='middle' alt='black' src='https://readme-swatches.vercel.app/000000?style=round'/>`#000000`
 
 ## Components
+![screenshot of initial state of the game](/docs/assets/design_system/screenshots/initialState.png)
 - Sidebar/header
   - Title
   - Rules Section
@@ -25,3 +26,6 @@
   - Roll dice button
   - New game button
 - Score card
+
+### Screenshot of sidebar
+![screenshot of sidebar](/docs/assets/design_system/screenshots/sidebar.png)
