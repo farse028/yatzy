@@ -196,3 +196,26 @@ function calculateYatzy(diceStates) {
     }
     return 50;
 }
+
+
+function calculateUpperSum(gameState) {
+    // null = 0 in js so this works
+    return gameState['ones'] + gameState['twos'] + gameState['threes'] + gameState['fours'] + gameState['fives'] + gameState['sixes'] + gameState['sixes'];
+}
+
+function calculateBonus(gameState) {
+    // if upper section score is 63+ -> give bonus
+    return calculateUpperSum(gameState) >= 63 ? 50 : 0
+}
+
+function calculateTotal(gameState) {
+    let total = 0;
+
+    for (const value of Object.values(gameState)) {
+       total += value;
+    }
+
+    total += calculateBonus(gameState);
+
+    return total;
+}

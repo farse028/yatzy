@@ -21,10 +21,10 @@
     <tr>
         <td></td>
         <th>Max</th>
-        <td colspan="3"></td>
+        <th>Score</th>
     </tr>
     <tr>
-        <th colspan="4">Upper Section</th>
+        <th colspan="3">Upper Section</th>
     </tr>
     <tr id="ones">
         <th>1's</th>
@@ -50,7 +50,7 @@
         <th>6's</th>
         <td>30</td>
     </tr>
-    <tr id="sum">
+    <tr id="upperSum">
         <th>Sum</th>
         <td>0</td>
     </tr>
@@ -122,7 +122,6 @@
     });
 
     function render() {
-        console.log('rendering!!')
         // clear dice
         diceOutput.innerHTML = "";
         //re-render dice
@@ -140,22 +139,26 @@
             row.removeChild(row.lastChild)
             let td = document.createElement('td')
             let id = row.id;
+            //remove click event listener (to make rerendering quick).
+            row.removeEventListener('click', row.fn);
 
-            if (id !== "" && id !== "sum" && id !== "bonus" && id !== "total") {
 
-                if (game.scoreState[id] !== null) {
+            if (id !== "") {
+                if (game.scoreState[id] === undefined) {
+                    let func = `calculate${id.charAt(0).toUpperCase() + id.slice(1)}(game.scoreState)`;
+                    td.innerHTML = eval(func);
+                } else if (game.scoreState[id] !== null) {
                     row.className = 'used';
+                    td.innerHTML = game.scoreState[id];
+                } else {
+                    // store reference to function so it can be deleted
+                    row.addEventListener('click', row.fn = () => {
+                        game.selectScore(id);
+                        render();
+                    });
+                    let func = `calculate${id.charAt(0).toUpperCase() + id.slice(1)}(diceState)`;
+                    td.innerHTML = eval(func);
                 }
-
-                row.removeEventListener('click', row.fn);
-
-                // store reference to function so it can be deleted
-                row.addEventListener('click', row.fn =  () => {
-                    game.selectScore(id);
-                    render();
-                })
-                let func = `calculate${id.charAt(0).toUpperCase() + id.slice(1)}(diceState)`;
-                td.innerHTML = eval(func);
             }
             row.append(td);
         }
