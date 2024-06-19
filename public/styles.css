@@ -30,7 +30,7 @@ th, td {
 
 
 
-tr:hover:not(.used, .label) {
+tr:hover:not(.used, .label, #total, #upperSum, #bonus) {
     background-color: lightgreen;
 }
 
@@ -40,4 +40,8 @@ tr:hover:not(.used, .label) {
 
 .locked {
     border: solid 2px red;
+}
+
+.label {
+    background-color: darkgray;
 }
