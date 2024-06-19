@@ -142,7 +142,6 @@
             //remove click event listener (to make rerendering quick).
             row.removeEventListener('click', row.fn);
 
-
             if (id !== "") {
                 if (game.scoreState[id] === undefined) {
                     let func = `calculate${id.charAt(0).toUpperCase() + id.slice(1)}(game.scoreState)`;

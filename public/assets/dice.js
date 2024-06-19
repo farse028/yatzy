@@ -49,6 +49,7 @@ class Dice {
 
         // clear dice dom
         this.dom.innerHTML = "";
+
         if (this.game.keepState[this.id]) {
             this.dom.classList.add('locked');
         } else{

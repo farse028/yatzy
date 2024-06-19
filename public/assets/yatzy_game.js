@@ -53,11 +53,9 @@ class YatzyGame {
 
     selectScore(scoreMethod) {
         if (this.scoreState[scoreMethod] === null) {
-            console.log('in')
             let funcName = scoreMethod.charAt(0).toUpperCase() + scoreMethod.slice(1)
             let func = `calculate${funcName}(this.getDice())`
             this.scoreState[scoreMethod] = eval(func);
-            console.log(this.scoreState);
             // if success -> reset the users turn
             this.resetTurn()
         }
@@ -66,14 +64,13 @@ class YatzyGame {
     toggleKeep(index) {
         // Toggle the keep state of a die at the given index
         this.keepState[index] = !this.keepState[index];
-        console.log('in here');
     }
 
     resetTurn() {
         // Reset the turn to its initial state
         this.rollsRemaining = 2;
         this.keepState = [false, false, false, false, false]; // Keep / re-roll state of each dice
-
+        this.dices = [];
         for (let i = 0; i < 5; i++) {
             this.dices.push(new Dice(i, this));
         }
