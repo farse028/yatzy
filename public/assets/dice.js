@@ -1,10 +1,17 @@
-class Dice {
 
-    constructor(sides = 6) {
-        this.sides = sides; // Default to a six-sided dice
+class Dice {
+    constructor(id, game) {
+        this.id = id;
+        //need the game so we know which dice we are clicking
+        this.game = game;
+        this.sides = 6; // Default to a six-sided dice
         this.state = Math.floor(Math.random() * this.sides) + 1;
         this.dom = document.createElement('div');
         this.dom.className = 'dice';
+        this.dom.addEventListener('click', e => {
+            this.game.toggleKeep(this.id);
+            this.render();
+        })
     }
 
     roll() {
@@ -13,7 +20,7 @@ class Dice {
         return this.state;
     }
 
-    getState(){
+    getState() {
         return this.state;
     }
 
@@ -39,8 +46,14 @@ class Dice {
                 true, false, true],
 
         }
+
         // clear dice dom
         this.dom.innerHTML = "";
+        if (this.game.keepState[this.id]) {
+            this.dom.classList.add('locked');
+        } else{
+            this.dom.classList.remove('locked');
+        }
         //rerender dice
         for (let i = 0; i < 9; i++) {
             let child = document.createElement("div");

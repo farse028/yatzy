@@ -35,3 +35,7 @@ tr:hover {
 .used {
     background-color: lightgray;
 }
+
+.locked {
+    border: solid 2px red;
+}

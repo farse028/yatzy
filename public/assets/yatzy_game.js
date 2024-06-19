@@ -3,7 +3,10 @@ import Dice from "/public/assets/dice.js";
 class YatzyGame {
     constructor() {
         this.rollsRemaining = 3;
-        this.dices = [new Dice(), new Dice(), new Dice(), new Dice(), new Dice()]; // Current value on each of the 5 dice
+        this.dices = [];
+        for (let i = 0; i < 5; i++) {
+            this.dices.push(new Dice(i, this));
+        }
         this.keepState = [false, false, false, false, false]; // Keep / re-roll state of each dice
         this.scoreState = {
             //upper section
@@ -63,13 +66,17 @@ class YatzyGame {
     toggleKeep(index) {
         // Toggle the keep state of a die at the given index
         this.keepState[index] = !this.keepState[index];
+        console.log('in here');
     }
 
     resetTurn() {
         // Reset the turn to its initial state
         this.rollsRemaining = 2;
-        this.dices = [new Dice(), new Dice(), new Dice(), new Dice(), new Dice()]; // Current value on each of the 5 dice
         this.keepState = [false, false, false, false, false]; // Keep / re-roll state of each dice
+
+        for (let i = 0; i < 5; i++) {
+            this.dices.push(new Dice(i, this));
+        }
     }
 }
 
