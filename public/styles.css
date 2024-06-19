@@ -28,7 +28,9 @@ th, td {
     border: solid 1px black;
 }
 
-tr:hover {
+
+
+tr:hover:not(.used, .label) {
     background-color: lightgreen;
 }
 
