@@ -20,6 +20,14 @@
     flex-wrap: wrap;
 }
 
+#game {
+    width: 100%;
+    padding-left: 25px;
+}
+
+#game h2 {
+    margin-top: 0px;
+}
 table {
     border-collapse: collapse;
 }
@@ -28,7 +36,9 @@ th, td {
     border: solid 1px black;
 }
 
-
+#body {
+    display: flex;
+}
 
 tr:hover:not(.used, .label, #total, #upperSum, #bonus) {
     background-color: lightgreen;
