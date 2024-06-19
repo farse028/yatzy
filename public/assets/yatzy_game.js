@@ -2,7 +2,7 @@ import Dice from "/public/assets/dice.js";
 
 class YatzyGame {
     constructor() {
-        this.rollsRemaining = 3;
+        this.rollsRemaining = 2;
         this.dices = [];
         for (let i = 0; i < 5; i++) {
             this.dices.push(new Dice(i, this));

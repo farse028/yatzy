@@ -17,13 +17,16 @@
 <p>Rolls remaining: <span id="rollsRemaining"></span></p>
 
 <table id="scoreCard">
+    <tr class="label">
+        <th colspan="3">SCORE CARD</th>
+    </tr>
     <tbody>
-    <tr>
+    <tr class="label">
         <td></td>
         <th>Max</th>
         <th>Score</th>
     </tr>
-    <tr>
+    <tr class="label">
         <th colspan="3">Upper Section</th>
     </tr>
     <tr id="ones">
@@ -59,7 +62,7 @@
         <td>50</td>
     </tr>
     </tbody>
-    <tr>
+    <tr class="label">
         <th colspan="4">Lower Section</th>
     </tr>
     <tr id="onePair">
@@ -114,7 +117,7 @@
     const rows = scoreOutput.rows;
     const rollsRemaining = document.getElementById('rollsRemaining');
 
-
+    render();
     rollsRemaining.innerHTML = game.rollsRemaining;
     rollButton.addEventListener('click', () => {
         game.rollDice();
@@ -136,6 +139,11 @@
         let diceState = game.getDice();
 
         for (let row of rows) {
+
+            if (row.classList.contains('label')) {
+                continue;
+            }
+
             row.removeChild(row.lastChild)
             let td = document.createElement('td')
             let id = row.id;
