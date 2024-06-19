@@ -133,7 +133,6 @@
         rollsRemaining.innerHTML = game.rollsRemaining;
     }
 
-    //TODO: make more efficient (render is occuring multiple times)!
     function renderScoreCard() {
         let diceState = game.getDice();
 
@@ -141,26 +140,25 @@
             row.removeChild(row.lastChild)
             let td = document.createElement('td')
             let id = row.id;
-            let handleClickBinding = handleClickedRow.bind(null, id);
-            row.removeEventListener('click', handleClickBinding)
+
             if (id !== "" && id !== "sum" && id !== "bonus" && id !== "total") {
 
                 if (game.scoreState[id] !== null) {
                     row.className = 'used';
                 }
-                // capitalize first letter of string
-                row.addEventListener('click', handleClickBinding)
+
+                row.removeEventListener('click', row.fn);
+
+                // store reference to function so it can be deleted
+                row.addEventListener('click', row.fn =  () => {
+                    game.selectScore(id);
+                    render();
+                })
                 let func = `calculate${id.charAt(0).toUpperCase() + id.slice(1)}(diceState)`;
                 td.innerHTML = eval(func);
             }
             row.append(td);
         }
-    }
-
-
-    function handleClickedRow(id) {
-        game.selectScore(id);
-        render();
     }
 </script>
 </body>
