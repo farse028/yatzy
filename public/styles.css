@@ -111,6 +111,7 @@ th, td {
     border: solid 1px black;
     text-align: center;
     font-family: "Georgia", serif;
+    max-width: 12ch;
 }
 
 tr:hover:not(.used, .label, #total, #upperSum, #bonus) {

@@ -16,7 +16,6 @@
         <h3>Rules</h3>
         <p>You have up to 3 rolls per turn. In each turn you can choose which dice you keep (the rest are rerolled).
             During each turn you must choose a method to score as described on the scorecard. Each scoring method must be used only once per game.</p>
-
         <h3>Controls</h3>
         <ul>
             <li>Click the roll button to roll</li>
@@ -29,47 +28,56 @@
 <div id="body">
     <table id="scoreCard">
         <tr class="label" id="scoreCardTitle">
-            <th colspan="3">SCORE CARD</th>
+            <th colspan="4">SCORE CARD</th>
         </tr>
         <tbody>
         <tr class="label">
-            <td></td>
+            <th>Scoring Method</th>
+            <th>Description</th>
             <th>Max</th>
             <th>Score</th>
         </tr>
         <tr class="label">
-            <th colspan="3">Upper Section</th>
+            <th colspan="4">Upper Section</th>
         </tr>
         <tr id="ones">
             <th>1'</th>
+            <td>The sum of all dice with the number 1</td>
             <td>5</td>
         </tr>
         <tr id="twos">
             <th>2's</th>
+            <td>The sum of all dice with the number 2</td>
             <td>10</td>
         </tr>
         <tr id="threes">
             <th>3's</th>
+            <td>The sum of all dice with the number 3</td>
             <td>15</td>
         </tr>
         <tr id="fours">
             <th>4's</th>
+            <td>The sum of all dice with the number 4</td>
             <td>20</td>
         </tr>
         <tr id="fives">
             <th>5's</th>
+            <td>The sum of all dice with the number 5</td>
             <td>25</td>
         </tr>
         <tr id="sixes">
             <th>6's</th>
+            <td>The sum of all dice with the number 6</td>
             <td>30</td>
         </tr>
         <tr id="upperSum">
             <th>Sum</th>
-            <td>0</td>
+            <td>Sum off upper section</td>
+            <td>105</td>
         </tr>
         <tr id="bonus">
             <th>Bonus</th>
+            <td>Awarded if upper section is 63 or larger</td>
             <td>50</td>
         </tr>
         </tbody>
@@ -78,42 +86,52 @@
         </tr>
         <tr id="onePair">
             <th>One Pair</th>
+            <td>Sum of two dice with the same number</td>
             <td>12</td>
         </tr>
         <tr id="twoPairs">
             <th>Two Pairs</th>
+            <td>Sum of two distinct sets of two dice with the same number</td>
             <td>22</td>
         </tr>
         <tr id="threeOfAKind">
             <th>Three of a Kind</th>
+            <td>Sum of three dice with the same number</td>
             <td>18</td>
         </tr>
         <tr id="fourOfAKind">
             <th>Four of a Kind</th>
+            <td>Sum of four dice with the same number</td>
             <td>24</td>
         </tr>
         <tr id="smallStraight">
             <th>Small Straight</th>
+            <td>The combination 1-2-3-4-5</td>
             <td>15</td>
         </tr>
         <tr id="largeStraight">
             <th>Large Straight</th>
+            <td>The combination 2-3-4-5-6</td>
             <td>20</td>
         </tr>
         <tr id="fullHouse">
             <th>Full House</th>
+            <td>Triplets combined with a different pair</td>
             <td>28</td>
         </tr>
         <tr id="chance">
             <th>Chance</th>
+            <td>Sum of any combination of dice</td>
             <td>30</td>
         </tr>
         <tr id="yatzy">
             <th>Yatzy</th>
+            <td>All dice are the same</td>
             <td>50</td>
         </tr>
         <tr id="total">
             <th>Total</th>
+            <td></td>
             <td>374</td>
         </tr>
     </table>
