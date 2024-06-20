@@ -29,3 +29,14 @@
 
 ### Screenshot of sidebar
 ![screenshot of sidebar](/docs/assets/design_system/screenshots/sidebar.png)
+
+### Screenshot of dice in normal state
+![screenshot of dice](/docs/assets/design_system/screenshots/dice.png)
+### Screenshot of dice in locked state
+![screenshot of locked dice](/docs/assets/design_system/screenshots/lockedDice.png)
+### Screenshot of empty scorecard 
+![screenshot of scorecard](/docs/assets/design_system/screenshots/scorecard.png)
+### Screenshot of partially filled scorecard
+![screenshot of scorecard](/docs/assets/design_system/screenshots/partialFilledScorecard.png)
+### Screenshot of gameboard with no rolls left
+![screenshot of scorecard](/docs/assets/design_system/screenshots/gameboard.png)
