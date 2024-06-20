@@ -84,7 +84,7 @@ h1 {
 #game {
     flex-shrink: 5;
     flex-grow: 3;
-    flex-basis: 210px;
+    flex-basis: 230px;
 }
 
 #game h2 {
