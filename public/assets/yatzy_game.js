@@ -1,4 +1,4 @@
-import Dice from "/public/assets/dice.js";
+import Dice from "./dice.js";
 
 class YatzyGame {
     constructor() {

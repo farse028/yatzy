@@ -1,4 +1,3 @@
-
 class Dice {
     constructor(id, game) {
         this.id = id;
