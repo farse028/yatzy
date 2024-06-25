@@ -1,5 +1,12 @@
 # Yatzy game
 [Design System](docs/design_system.md)
+
+## Running the game
+1. Ensure node.js is installed (to use npm)
+2. In the root directory run npx http-server. This will start a server on localhost:8080.
+To view the website visit localhost:8080/test.html
+
+
 ## Rules
 You have up to 3 rolls per turn. In each turn you can choose which dice you keep (the rest are rerolled).
 During each turn you must choose a method to [score](#Scoring) as described below. Each scoring method must be used only once per game.
