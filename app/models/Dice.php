@@ -1,16 +1,18 @@
 <?php
 namespace Yatzy;
 class Dice {
-    // Define the number of sides on the dice
-    private $sides;
+    // Define the minimum and maximum values of the dice
+    public $min = 1;
+    public $max = 6;
 
     // Constructor to initialize the dice with a specific number of sides
-    public function __construct($sides = 6) {
-        $this->sides = $sides;
+    public function __construct($min = 1, $max = 6) {
+        $this->min = $min;
+        $this->max = $max;
     }
 
     // Roll the dice and return a random number between 1 and the number of sides
     public function roll() {
-        return rand(1, $this->sides);
+        return rand($this->min, $this->max);
     }
 }

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
-phpunit.cmd --version
+#phpunit.cmd --version
 
-phpunit.cmd tests
+#phpunit.cmd tests
+
+phpunit.cmd --bootstrap=tests/bootstrap.php tests
