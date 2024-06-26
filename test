@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+phpunit.cmd --version
+
+phpunit.cmd tests
