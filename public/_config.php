@@ -2,6 +2,9 @@
 
 $GLOBALS["appDir"] = resolve_path("app");
 
+$GLOBALS["vendorDir"] = resolve_path("vendor");
+require_once $GLOBALS["vendorDir"] . "/autoload.php";
+
 function resolve_path($name)
 {
     if ($name == ".")

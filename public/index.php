@@ -71,29 +71,17 @@ $scoreCard = [$scoreForOnes+$scoreForTwos+$scoreForThrees+$scoreForFours+$scoreF
 $overallScoreData = $yatzyEngine->updateOverallScore($scoreCard);
 echo "Total Score: " . $overallScoreData['totalScore'] . "<br>";
 echo "Bonus: " . $overallScoreData['bonus'] . "<br>";
-?>
 
-<html>
-  <head>
-    <script type="text/javascript" src="/assets/jquery-3.7.1.min.js"></script>
-  </head>
-  <body>
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
 
-    <div id="die1">--</div>
-    <button id="roll">Roll</button>
+$app = AppFactory::create();
 
-    <script>
-      const die1 = document.getElementById("die1");
-      const roll = document.getElementById("roll");
-      roll.onclick = async function() {
-        let answer = $.ajax({
-          type: "GET",
-          url: "api.php?action=roll"
-        }).then(function(data) {
-          die1.innerHTML = data.value;
-        });
-      };
-    </script>
+$app->get('/', function (Request $request, Response $response, $args) {
+    $view = file_get_contents("{$GLOBALS["appDir"]}/views/index.html");
+    $response->getBody()->write($view);
+    return $response;
+});
 
-  </body>
-</html>
+$app->run();
